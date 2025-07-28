@@ -1,6 +1,5 @@
 -- Creating a Stored Procedure for Retrieving Order Details
 
-c
 DELIMITER //
 
 CREATE PROCEDURE GetOrderDetails(
@@ -16,5 +15,6 @@ BEGIN
 END //
 
 DELIMITER ;
+
 
 CALL GetOrderDetails(2);
