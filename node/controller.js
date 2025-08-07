@@ -12,20 +12,21 @@ exports.getAll = function(req, res) {
     });
 };
 
-/*exports.insert = function(req, res) {
-     var new_task = new Task(req.body);
+exports.insert = function(req, res) {
+     var question= (req.body);
 
      //handles null error
-     if (!new_task.task || !new_task.status){
-        res.status(400).send({error:true,message:'Please provide task/status'});
-     }else{
-        Task.createTask(new_task,function(err,task){
-             if(err)
+     if ( !question.subjectid || !question.title || !question.a || !question.b || !question.c || !question.d || !question.answerkey || !question.evaluationcriteriaid){
+        res.status(400).send({error: true, message:'Please provide all required fields (title, subjectId, options, answerKey)' });
+     }else {
+        QuestionBank.createQuestion(question,function(err,insertId){
+            if(err)
                 res.send(err);
-            res.json(task);
+            else
+            res.json({ id: insertId, message: 'Question inserted successfully'});
         });
      }
-};*/
+};
 
 exports.getById = function(req, res) {
     QuestionBank.getQuestionById(req.params.id,function(err,question) {
@@ -36,18 +37,18 @@ exports.getById = function(req, res) {
     });
 };
 
-/*exports.update = function(req, res) {
-    Task.updateById(req.params.taskId,new Task(req.body),function(err,task) {
+exports.update = function(req, res) {
+    QuestionBank.updateById(req.params.id,new QuestionBank(req.body),function(err,question) {
         if(err)
             res.send(err);
-        res.json(task);
+        res.json({message: 'Question updated successfully'});
     });
 };
 
 exports.remove = function(req, res) {
-    Task.remove(req.params.taskId,function(err,task) {
+    QuestionBank.remove(req.params.id,function(err,question) {
         if(err)
             res.send(err);
-        res.json({message:'Task successfully deleted'});
+        res.json({message:'Question successfully deleted'});
     });
-};*/
+};

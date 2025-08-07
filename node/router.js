@@ -5,10 +5,10 @@ module.exports = function(app) {
 
     app.route('/questionbank')
     .get(questionController.getAll)
-    //.post(questionController.insert);
+    .post(questionController.insert);
 
     app.route('/questionbank/:id')
     .get(questionController.getById)
-   // .put(questionController.update)
-    //.delete(questionController.remove);
+    .put(questionController.update)
+    .delete(questionController.remove);
 };
