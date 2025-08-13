@@ -1,6 +1,5 @@
 //logic for handling HTTP request types///GET, POST, PUT, DELETE ETC
 
-'use strict';
 var QuestionBank = require('./dal');
 
 exports.getAll = function(req, res) {

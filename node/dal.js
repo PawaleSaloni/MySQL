@@ -1,7 +1,6 @@
 //mysql database CRUD operations functionality
 //insert, update, delete, etc  
 
-'user strict';
 var sql = require('./mysqlconnect');
 
 //define model
